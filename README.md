@@ -1,5 +1,6 @@
-# 通过第三方柏拉图api调用 Banana的api使用
-注册地址 [柏拉图1](https://api.bltcy.ai/register?aff=3hiF)，注册地址 [柏拉图2](https://api.bltcy.ai/register?aff=cKgq)
+# 通过第V-API调用 Banana的api使用
+
+https://api.v3.cm/
 
 ## 功能特性
 

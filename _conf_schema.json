@@ -3,7 +3,7 @@
         "description": "内置的 API 的 URL 地址",
         "type": "string",
         "hint": "默认为插件中的地址",
-        "default": "https://api.bltcy.ai/v1/chat/completions"
+        "default": "https://api.vveai.com/v1/chat/completions"
     },
     "api_keys": {
         "description": "API 密钥列表",

@@ -358,15 +358,27 @@ class FigurineProPlugin(Star):
             return key
 
     def _extract_image_url_from_response(self, data: Dict[str, Any]) -> str | None:
-        try: return data["choices"][0]["message"]["images"][0]["image_url"]["url"]
-        except (IndexError, TypeError, KeyError): pass
-        try: return data["choices"][0]["message"]["images"][0]["url"]
-        except (IndexError, TypeError, KeyError): pass
+        try:
+            # 1. 先尝试直接提取 images 字段
+            return data["choices"][0]["message"]["images"][0]["image_url"]["url"]
+        except (IndexError, TypeError, KeyError):
+            pass
+        try:
+            return data["choices"][0]["message"]["images"][0]["url"]
+        except (IndexError, TypeError, KeyError):
+            pass
         try:
             content_text = data["choices"][0]["message"]["content"]
+            # 2. 支持 Markdown 图片语法 ![image](data:image/png;base64,...)
+            md_img_match = re.search(r'!\[.*?\]\((data:image/[^)]+)\)', content_text)
+            if md_img_match:
+                return md_img_match.group(1)
+            # 3. 支持普通 URL
             url_match = re.search(r'https?://[^\s<>")\]]+', content_text)
-            if url_match: return url_match.group(0).rstrip(")>,'\"")
-        except (IndexError, TypeError, KeyError): pass
+            if url_match:
+                return url_match.group(0).rstrip(")>,'\"")
+        except (IndexError, TypeError, KeyError):
+            pass
         return None
 
     async def _call_api(self, image_bytes: bytes, prompt: str) -> bytes | str:

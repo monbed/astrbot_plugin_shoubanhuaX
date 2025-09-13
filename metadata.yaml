@@ -1,7 +1,7 @@
 {
-    "name": "astrbot_plugin_shoubanhua",
+    "name": "astrbot_plugin_shoubanhuaX",
     "desc": "通过第三方api，实现手办化、cos化等等功能",
-    "author": "shskjw",
-    "repo": "https://github.com/shskjw/astrbot_plugin_shoubanhua",
+    "author": "monbed",
+    "repo": "https://github.com/monbed/astrbot_plugin_shoubanhuaX",
     "version": "1.0.0"
 }

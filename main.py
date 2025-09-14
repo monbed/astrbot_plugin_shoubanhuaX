@@ -264,28 +264,28 @@ class FigurineProPlugin(Star):
             yield event.plain_result("格式错误，请使用 #手办化删除key <序号|all>")
     
     # --- 图片生成指令 (一个指令一个函数) ---
-    @filter.command(r"^手办化$", is_regex=True)
+    @filter.command("手办化")
     async def on_cmd_figurine(self, event: AstrMessageEvent):
         cmd = "手办化"
         async for result in self._process_figurine_request(event, cmd): yield result
     
-    @filter.command(r"^手办化2$", is_regex=True)
+    @filter.command("手办化2")
     async def on_cmd_figurine2(self, event: AstrMessageEvent):
         async for result in self._process_figurine_request(event, "手办化2"): yield result
         
-    @filter.command(r"^手办化3$", is_regex=True)
+    @filter.command("手办化3")
     async def on_cmd_figurine3(self, event: AstrMessageEvent):
         async for result in self._process_figurine_request(event, "手办化3"): yield result
 
-    @filter.command(r"^手办化4$", is_regex=True)
+    @filter.command("手办化4")
     async def on_cmd_figurine4(self, event: AstrMessageEvent):
         async for result in self._process_figurine_request(event, "手办化4"): yield result
         
-    @filter.command(r"^手办化5$", is_regex=True)
+    @filter.command("手办化5")
     async def on_cmd_figurine5(self, event: AstrMessageEvent):
         async for result in self._process_figurine_request(event, "手办化5"): yield result
 
-    @filter.command(r"^手办化6$", is_regex=True)
+    @filter.command("手办化6")
     async def on_cmd_figurine6(self, event: AstrMessageEvent):
         async for result in self._process_figurine_request(event, "手办化6"): yield result
         

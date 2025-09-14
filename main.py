@@ -24,6 +24,7 @@ from astrbot.core.platform.astr_message_event import AstrMessageEvent
     "shskjw",
     "一个强大的图片风格化插件",
     "v1.1.0",
+)
 class FigurineProPlugin(Star):
     
     class ImageWorkflow:

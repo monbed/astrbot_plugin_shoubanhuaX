@@ -345,9 +345,10 @@ class FigurineProPlugin(Star):
     async def on_cmd_fumo(self, event: AstrMessageEvent):
         async for result in self._process_figurine_request(event, "fumo化"): yield result
 
-    @filter.command("手办化帮助", prefix_optional=True)
+    @filter.command("手办化帮助", priority=10)
     async def on_cmd_help(self, event: AstrMessageEvent):
-        async for result in self._process_figurine_request(event, "手办化帮助"): yield result
+        help_text = self.conf.get("help_text", "帮助信息未配置")
+        yield event.plain_result(help_text)
 
     # --- 核心图片生成处理器 ---
     async def _process_figurine_request(self, event: AstrMessageEvent, cmd: str):

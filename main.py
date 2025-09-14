@@ -264,28 +264,28 @@ class FigurineProPlugin(Star):
             yield event.plain_result("格式错误，请使用 #手办化删除key <序号|all>")
     
     # --- 图片生成指令 (一个指令一个函数) ---
-    @filter.command("手办化", prefix_optional=True)
+    @filter.command(r"^手办化$", is_regex=True)
     async def on_cmd_figurine(self, event: AstrMessageEvent):
         cmd = "手办化"
         async for result in self._process_figurine_request(event, cmd): yield result
     
-    @filter.command("手办化2", prefix_optional=True)
+    @filter.command(r"^手办化2$", is_regex=True)
     async def on_cmd_figurine2(self, event: AstrMessageEvent):
         async for result in self._process_figurine_request(event, "手办化2"): yield result
         
-    @filter.command("手办化3", prefix_optional=True)
+    @filter.command(r"^手办化3$", is_regex=True)
     async def on_cmd_figurine3(self, event: AstrMessageEvent):
         async for result in self._process_figurine_request(event, "手办化3"): yield result
 
-    @filter.command("手办化4", prefix_optional=True)
+    @filter.command(r"^手办化4$", is_regex=True)
     async def on_cmd_figurine4(self, event: AstrMessageEvent):
         async for result in self._process_figurine_request(event, "手办化4"): yield result
         
-    @filter.command("手办化5", prefix_optional=True)
+    @filter.command(r"^手办化5$", is_regex=True)
     async def on_cmd_figurine5(self, event: AstrMessageEvent):
         async for result in self._process_figurine_request(event, "手办化5"): yield result
 
-    @filter.command("手办化6", prefix_optional=True)
+    @filter.command(r"^手办化6$", is_regex=True)
     async def on_cmd_figurine6(self, event: AstrMessageEvent):
         async for result in self._process_figurine_request(event, "手办化6"): yield result
         
@@ -347,8 +347,7 @@ class FigurineProPlugin(Star):
 
     @filter.command("手办化帮助", prefix_optional=True)
     async def on_cmd_help(self, event: AstrMessageEvent):
-        help_text = self.conf.get("help_text", "帮助信息未配置")
-        yield event.plain_result(help_text)
+        async for result in self._process_figurine_request(event, "手办化帮助"): yield result
 
     # --- 核心图片生成处理器 ---
     async def _process_figurine_request(self, event: AstrMessageEvent, cmd: str):

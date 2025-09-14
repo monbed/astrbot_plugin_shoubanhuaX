@@ -1,4 +1,4 @@
-# 通过第V-API调用 Banana的api使用
+# 通过V-API调用 Banana的api使用
 
 https://api.v3.cm/
 

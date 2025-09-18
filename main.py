@@ -719,6 +719,11 @@ class FigurineProPlugin(Star):
             content_text = data["choices"][0]["message"]["content"]
             url_match = re.search(r'https?://[^\s<>")\]]+', content_text)
             if url_match: return url_match.group(0).rstrip(")>,'\"")
+            if '![image](' in content_text:
+                start_idx = content_text.find('![image](')+len('![image](')
+                end_idx = content_text.find(')', start_idx)
+                if end_idx > start_idx:
+                    return content_text[start_idx:end_idx].strip()
         except (IndexError, TypeError, KeyError):
             pass
         return None
@@ -783,3 +788,4 @@ class FigurineProPlugin(Star):
     async def terminate(self):
         if self.iwf: await self.iwf.terminate()
         logger.info("[FigurinePro] 插件已终止")
+
